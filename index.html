@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Profil Wawan</title>
+
+  <style>
+    /* ===== WARNA ===== */
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #e5e7eb;
+      --nav: #020617;
+      --btn: #3b82f6;
+    }
+
+    body.light {
+      --bg: #f1f5f9;
+      --card: #ffffff;
+      --text: #111827;
+      --nav: #e5e7eb;
+      --btn: #2563eb;
+    }
+
+    /* ===== GLOBAL ===== */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.4s, color 0.4s;
+    }
+
+    h1, h2, p, li {
+      color: var(--text);
+    }
+
+    a {
+      color: var(--btn);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position: sticky;
+      top: 0;
+      background: var(--nav);
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+    /* ===== LAYOUT ===== */
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    /* ===== CARD ===== */
+    .card {
+      background: var(--card);
+      width: 90%;
+      max-width: 400px;
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      animation: fadeUp 0.6s ease;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+    }
+
+    /* ===== BUTTON ===== */
+    button {
+      padding: 10px 14px;
+      border: none;
+      border-radius: 8px;
+      background: var(--btn);
+      color: white;
+      cursor: pointer;
+    }
+
+    /* ===== MEDIA SOSIAL ===== */
+    #sosial a {
+      display: block;
+      background: rgba(255,255,255,0.05);
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 10px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    #sosial a:hover {
+      background: var(--btn);
+      color: white;
+      transform: scale(1.05);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (min-width: 768px) {
+      .container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .card {
+        width: 45%;
+        margin: 15px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background: var(--nav);
+        border-radius: 12px;
+        padding: 15px;
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        animation: fadeUp 0.3s ease;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+    }
+
+    /* ===== ANIMASI ===== */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <strong>Web Wawan</strong>
+
+    <div class="nav-links" id="navLinks">
+      <a href="#profil">Profil</a>
+      <a href="#hobi">Hobi</a>
+      <a href="#sosial">Sosial</a>
+      <button onclick="toggleMode()">🌙 / ☀️</button>
+    </div>
+
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+  </nav>
+
+  <!-- CONTENT -->
+  <div class="container">
+
+    <div class="card" id="profil">
+      <h1>Profil Saya</h1>
+      <h2>MUHAMMAD KUSNIAWAN</h2>
+      <p>
+        Saya adalah pelajar yang sedang belajar HTML, CSS, dan JavaScript
+        menggunakan HP Android.
+      </p>
+    </div>
+
+    <div class="card" id="hobi">
+      <h2>Hobi Saya</h2>
+      <ol>
+        <li>Bermain sepak bola</li>
+        <li>Bermain musik</li>
+        <li>Berolahraga</li>
+      </ol>
+    </div>
+
+    <div class="card" id="sosial">
+      <h2>Media Sosial</h2>
+      <a href="https://www.instagram.com/wawann__77?igsh=MTBnMDlsN2wzbGE0Yw==" target="_blank">Instagram</a>
+      <a href="https://www.tiktok.com/@wawan_7_0?_r=1&_t=ZS-92bJIL3IQhr" target="_blank">TikTok</a>
+      <a href="https://wa.me/6281382593450" target="_blank">WhatsApp</a>
+    </div>
+
+  </div>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    function toggleMode() {
+      document.body.classList.toggle("light");
+    }
+
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("show");
+    }
+  </script>
+
+</body>
+</html>
